@@ -136,11 +136,33 @@ def operate_entity():
 
 def query_operation():
    # todo: 1. 单向量搜索
+    # res = client.search(collection_name='demo_v2',
+    #                     data=[[0.19886812562848388, 0.06023560599112088, 0.6976963061752597, 0.2614474506242501, 0.838729485096104]],
+    #                     limit=2,
+    #                     search_params={"metric_type": "IP"},
+    #                     output_fields=["id", 'vector']) # search_params是在查询时执行距离计算方式，如果定义索引的时候，已经制定了方式可以不写
+    # print('单向搜索-',res)
+
+
+    # todo: 2. 批量向量搜索
     res = client.search(collection_name='demo_v2',
-                        data=[[0.19886812562848388, 0.06023560599112088, 0.6976963061752597, 0.2614474506242501, 0.838729485096104]],
+                        data=[[0.19886812562848388, 0.06023560599112088, 0.6976963061752597, 0.2614474506242501, 0.838729485096104],
+                              [0.3172005263489739, 0.9719044792798428, -0.36981146090600725, -0.4860894583077995, 0.95791889146345]],
                         limit=2,
                         search_params={"metric_type": "IP"},
                         output_fields=["id", 'vector']) # search_params是在查询时执行距离计算方式，如果定义索引的时候，已经制定了方式可以不写
-    print('单向搜索-',res)
+    print('批量----',res)
+
+
+    # todo: 4.指定返回字段
+    # 使用输出字段进行搜索允许您指定搜索结果中应包含匹配向量的哪些属性或字段。
+    res = client.search(
+        collection_name="demo_v2",
+        data=[[0.3580376395471989, -0.6023495712049978, 0.18414012509913835, -0.26286205330961354, 0.9029438446296592]],
+        limit=5,
+        search_params={"metric_type": "IP", "params": {}},
+        output_fields=['vector', "color"]  # 返回定义的字段
+    )
+    print('输出字段--',res)
 
 query_operation()
