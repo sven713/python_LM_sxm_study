@@ -1,4 +1,6 @@
 from pymilvus import MilvusClient, DataType
+import json
+
 
 def operate_db():
   client = MilvusClient(uri='milvus_demo.db')
@@ -164,5 +166,56 @@ def query_operation():
         output_fields=['vector', "color"]  # 返回定义的字段
     )
     print('输出字段--',res)
+
+    # result = json.dumps(res, indent=4)
+    # print('rr---',result)
+
+    import pprint
+    pprint.pprint(res, indent=4, width=120)
+
+    print('---'*10)
+
+    # todo: 5.过滤搜索
+    # 过滤器搜索：筛选搜索将标量筛选器应用于矢量搜索，允许我们根据特定条件优化搜索结果。
+    # 例如，要根据字符串模式优化搜索结果，可以使用 like 运算符。此运算符通过考虑前缀、中缀和后缀来启用字符串匹配：
+    # 筛选颜色以红色为前缀的结果：
+    res = client.search(
+        collection_name="demo_v2",
+        data=[[0.3580376395471989, -0.6023495712049978, 0.18414012509913835, -0.26286205330961354, 0.9029438446296592]],
+        limit=5,
+        search_params={"metric_type": "IP", "params": {}},
+        output_fields=["color"],
+        filter='color like "red*"'
+    )
+    print('color---',res)
+
+
+    print('---'*10)
+
+
+    # todo: 6.范围搜索
+    # 范围搜索允许查找距查询向量指定距离范围内的向量。
+    # 范围搜索:radius：定义搜索空间的外边界。只有距查询向量在此距离内的向量才被视为潜在匹配。
+    # range_filter：虽然radius设置搜索的外部限制，但可以选择使用range_filter来定义内部边界，创建一个距离范围，在该范围内向量必须落下才被视为匹配。
+    search_params = {
+        "metric_type": "IP",
+        "params": {
+            "radius": 0.8,  # 搜索圆的半径
+            "range_filter": 1  # 范围过滤器，用于过滤出不在搜索圆内的向量。
+        }
+    }
+
+    res = client.search(
+        collection_name="demo_v2",
+        data=[[0.3580376395471989, -0.6023495712049978, 0.18414012509913835, -0.26286205330961354, 0.9029438446296592]],
+        limit=3,  # 返回的搜索结果最大数量
+        search_params=search_params,
+        output_fields=["color"],
+    )
+    #
+    #
+    print('范围--',res)
+
+    
 
 query_operation()
