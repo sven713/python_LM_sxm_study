@@ -23,9 +23,9 @@ def operate_table():
 
 
 
-operate_table()
+# operate_table()
 
-print(f"✅ 集合列表: {client.list_collections()}")
+# print(f"✅ 集合列表: {client.list_collections()}")
 
 # mark:  5.3 Entity实体数据操作
 
@@ -132,6 +132,15 @@ def operate_entity():
     res = client.delete(collection_name='demo_v2', ids=[1, 2, 3, 4], partition_name='partitionA')
     print('id delete---',res)
 
-operate_entity()
+# operate_entity()
 
-# def query_operation():
+def query_operation():
+   # todo: 1. 单向量搜索
+    res = client.search(collection_name='demo_v2',
+                        data=[[0.19886812562848388, 0.06023560599112088, 0.6976963061752597, 0.2614474506242501, 0.838729485096104]],
+                        limit=2,
+                        search_params={"metric_type": "IP"},
+                        output_fields=["id", 'vector']) # search_params是在查询时执行距离计算方式，如果定义索引的时候，已经制定了方式可以不写
+    print('单向搜索-',res)
+
+query_operation()
