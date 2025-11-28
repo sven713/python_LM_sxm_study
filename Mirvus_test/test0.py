@@ -27,7 +27,7 @@ def operate_table():
 
 # operate_table()
 
-# print(f"✅ 集合列表: {client.list_collections()}")
+print(f"✅ 集合列表: {client.list_collections()}")
 
 # mark:  5.3 Entity实体数据操作
 
@@ -153,7 +153,7 @@ def query_operation():
                         limit=2,
                         search_params={"metric_type": "IP"},
                         output_fields=["id", 'vector']) # search_params是在查询时执行距离计算方式，如果定义索引的时候，已经制定了方式可以不写
-    print('批量----',res)
+    # print('批量----',res)
 
 
     # todo: 4.指定返回字段
@@ -165,7 +165,7 @@ def query_operation():
         search_params={"metric_type": "IP", "params": {}},
         output_fields=['vector', "color"]  # 返回定义的字段
     )
-    print('输出字段--',res)
+    # print('输出字段--',res)
 
     # result = json.dumps(res, indent=4)
     # print('rr---',result)
