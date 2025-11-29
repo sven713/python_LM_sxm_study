@@ -29,3 +29,6 @@ logger = logging.getLogger("Example2")
 logger.debug("调试模式已开启")
 logger.info("正在处理数据")
 logger.error("数据处理失败")
+
+
+# todo  示例3：将日志存储到文件
