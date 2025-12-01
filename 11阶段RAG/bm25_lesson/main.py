@@ -14,7 +14,7 @@ def main():
     # 初始化BM25检索器
     bm25_search = BM25Search(documents)
     # 示例查询
-    query = "他喜欢编程"
+    query = "吃啥呢"
     # 执行检索
     result, score = bm25_search.search(query)
     if result:
