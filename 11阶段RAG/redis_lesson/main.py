@@ -6,8 +6,15 @@ logger = logging.getLogger(__name__)
 
 def hhmain():
   print(11112)
-  redis = RedisClient()
-    # 初始化 Redis 客户端
+  redis_client = RedisClient()
+  # 示例数据
+  key = "user:1"
+  value = {"name": "Alice", "age": 25}
+  # 存储数据
+  redis_client.set_data(key, value)
+  # 获取数据
+  result = redis_client.get_data(key)
+  print('!!!',result)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 # redis: 缓存
+import json
 import redis
 from base import  Config,logger
 
@@ -20,3 +21,19 @@ class RedisClient:
       except redis.RedisError as e:
         self.logger.error(f"Redis 连接失败: {e}")
         raise
+
+
+    def set_data(self, key, value):
+        try:
+            self.client.set(key, json.dumps(value))
+            self.logger.info(f"存储数据到 Redis: {key}")
+        except redis.RedisError as e:
+            self.logger.error(f"Redis 存储失败: {e}")
+
+    def get_data(self, key):
+        try:
+            data = self.client.get(key)
+            return json.loads(data) if data else None
+        except redis.RedisError as e:
+            self.logger.error(f"Redis 获取失败: {e}")
+            return None
