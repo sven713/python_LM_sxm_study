@@ -17,5 +17,14 @@ def hhmain():
   print('!!!',result)
 
 
+  # 示例查询缓存
+  query = "test_query"
+  answer = redis_client.get_answer(query)
+  if answer:
+      logger.info(f"缓存答案: {answer}")
+  else:
+      logger.info("未找到缓存答案")
+
+
 if __name__ == "__main__":
     hhmain()

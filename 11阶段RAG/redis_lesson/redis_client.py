@@ -37,3 +37,14 @@ class RedisClient:
         except redis.RedisError as e:
             self.logger.error(f"Redis 获取失败: {e}")
             return None
+    
+    def get_answer(self, query):
+        try:
+            answer = self.client.get(f"answer:{query}")
+            if answer:
+                self.logger.info(f"从 Redis 获取答案: {query}")
+                return answer
+            return None
+        except redis.RedisError as e:
+            self.logger.error(f"Redis 查询失败: {e}")
+            return None
