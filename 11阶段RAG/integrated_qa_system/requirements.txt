@@ -1,0 +1,5 @@
+pymysql
+pandas
+redis
+jieba
+rank_bm25
