@@ -6,3 +6,11 @@
 2025-12-03 13:57:48,099 - EduRAG - INFO - Redis 连接成功
 2025-12-03 13:58:32,879 - EduRAG - INFO - Redis 连接成功
 2025-12-05 15:02:52,372 - EduRAG - INFO - Redis 连接成功
+2025-12-06 12:22:13,009 - EduRAG - ERROR - MySQL 连接失败: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+2025-12-06 12:26:59,182 - EduRAG - ERROR - MySQL 连接失败: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+2025-12-06 12:29:41,388 - EduRAG - ERROR - MySQL 连接失败: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+2025-12-06 12:30:10,806 - EduRAG - ERROR - MySQL 连接失败: (1049, "Unknown database 'subjects_kg'")
+2025-12-06 12:34:31,379 - EduRAG - INFO - MySQL 连接成功
+2025-12-06 12:34:31,384 - EduRAG - INFO - Redis 连接成功
+2025-12-06 12:34:31,388 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-06 12:34:31,391 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.

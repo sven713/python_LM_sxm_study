@@ -20,7 +20,7 @@ class Config:
         # MySQL 用户名
         self.MYSQL_USER = self.config.get('mysql', 'user', fallback='root')
         # MySQL 密码
-        self.MYSQL_PASSWORD = self.config.get('mysql', 'password', fallback='123456') 
+        self.MYSQL_PASSWORD = self.config.get('mysql', 'password', fallback='abcd@123') 
         # MySQL 数据库名
         self.MYSQL_DATABASE = self.config.get('mysql', 'database', fallback='subjects_kg')  
 

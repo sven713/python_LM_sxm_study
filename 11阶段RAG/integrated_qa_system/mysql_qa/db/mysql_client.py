@@ -18,6 +18,7 @@ class MySQLClient:
         self.logger = logger
         try:
             # 连接 MySQL 数据库
+            print('pp----',Config().MYSQL_PASSWORD)
             self.connection = pymysql.connect(
                 host=Config().MYSQL_HOST,
                 user=Config().MYSQL_USER,
