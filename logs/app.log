@@ -77,3 +77,10 @@
 2025-12-07 13:02:00,144 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
 2025-12-07 13:02:00,145 - EduRAG - ERROR - 查询失败: (1146, "Table 'subjects_kg.jpkb' doesn't exist")
 2025-12-07 13:02:00,145 - EduRAG - WARNING - 未加载到问题
+2025-12-07 13:47:33,366 - EduRAG - INFO - MySQL 连接成功
+2025-12-07 13:47:33,367 - EduRAG - INFO - Redis 连接成功
+2025-12-07 13:47:33,367 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 13:47:33,368 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 13:47:33,369 - EduRAG - ERROR - 查询失败: (1146, "Table 'subjects_kg.jpkb' doesn't exist")
+2025-12-07 13:47:33,372 - EduRAG - WARNING - 未加载到问题
+2025-12-07 13:47:39,188 - EduRAG - ERROR - 系统错误: 'MySQLQASystem' object has no attribute 'query'
