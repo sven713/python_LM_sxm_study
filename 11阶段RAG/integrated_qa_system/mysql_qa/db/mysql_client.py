@@ -35,4 +35,22 @@ class MySQLClient:
             raise
 
 
+
+    def fetch_questions(self):
+            # 获取所有问题
+            try:
+                # 执行查询
+                self.cursor.execute("SELECT question FROM jpkb")
+                # 获取结果
+                results = self.cursor.fetchall()
+                # 记录获取成功
+                self.logger.info("成功获取问题")
+                # 返回结果
+                return results
+            except pymysql.MySQLError as e:
+                # 记录查询失败
+                self.logger.error(f"查询失败: {e}")
+                # 返回空列表
+                return []
+
 # todo  没看

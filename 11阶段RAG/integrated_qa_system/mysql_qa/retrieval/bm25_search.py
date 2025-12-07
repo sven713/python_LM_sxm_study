@@ -6,7 +6,7 @@ from rank_bm25 import BM25Okapi
 # # 导入文本预处理
 # from utils.preprocess import preprocess_text
 # # 导入日志
-from base import logger
+from base.logger import logger
 
 class BM25Search:
     def __init__(self, redis_client, mysql_client):
@@ -31,6 +31,7 @@ class BM25Search:
         tokenized_key = "qa_tokenized_questions"
         # 从 Redis 获取原始问题
         self.original_questions = self.redis_client.get_data(original_key)
+        print('77777')
         # 从 Redis 获取分词问题
         tokenized_questions = self.redis_client.get_data(tokenized_key)
         # 如果 Redis 中没有数据，从 MySQL 加载
