@@ -14,3 +14,35 @@
 2025-12-06 12:34:31,384 - EduRAG - INFO - Redis 连接成功
 2025-12-06 12:34:31,388 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
 2025-12-06 12:34:31,391 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 11:56:09,198 - EduRAG - ERROR - MySQL 连接失败: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+2025-12-07 12:02:15,753 - EduRAG - ERROR - MySQL 连接失败: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 61] Connection refused)")
+2025-12-07 12:03:50,800 - EduRAG - ERROR - MySQL 连接失败: (1049, "Unknown database 'subjects_kg'")
+2025-12-07 12:04:09,081 - EduRAG - INFO - MySQL 连接成功
+2025-12-07 12:04:09,082 - EduRAG - INFO - Redis 连接成功
+2025-12-07 12:04:09,082 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:04:09,083 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:04:31,430 - EduRAG - INFO - MySQL 连接成功
+2025-12-07 12:04:31,430 - EduRAG - INFO - Redis 连接成功
+2025-12-07 12:04:31,431 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:04:31,431 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:04:31,433 - EduRAG - WARNING - questions 表不存在
+2025-12-07 12:04:56,937 - EduRAG - INFO - MySQL 连接成功
+2025-12-07 12:04:56,938 - EduRAG - INFO - Redis 连接成功
+2025-12-07 12:04:56,938 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:04:56,938 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:04:56,940 - EduRAG - WARNING - questions 表不存在
+2025-12-07 12:04:56,940 - EduRAG - WARNING - 未加载到问题
+2025-12-07 12:15:30,921 - EduRAG - INFO - MySQL 连接成功
+2025-12-07 12:15:30,921 - EduRAG - INFO - Redis 连接成功
+2025-12-07 12:15:30,922 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:15:30,922 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:15:30,924 - EduRAG - WARNING - questions 表不存在
+2025-12-07 12:15:30,927 - EduRAG - WARNING - 未加载到问题
+2025-12-07 12:36:49,707 - EduRAG - INFO - MySQL 连接成功
+2025-12-07 12:36:49,707 - EduRAG - INFO - Redis 连接成功
+2025-12-07 12:36:49,708 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:36:49,708 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:37:01,735 - EduRAG - INFO - MySQL 连接成功
+2025-12-07 12:37:01,736 - EduRAG - INFO - Redis 连接成功
+2025-12-07 12:37:01,736 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-07 12:37:01,737 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
