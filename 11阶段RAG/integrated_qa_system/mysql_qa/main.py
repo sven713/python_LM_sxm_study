@@ -6,12 +6,26 @@ from base.logger import logger
 class MySQLQASystem:
     def __init__(self):
         print(11111)
+        self.logger = logger
         # 初始化 MySQL 客户端
         self.mysql_client = MySQLClient()
         # 初始化 Redis 客户端
         self.redis_client = RedisClient()
         # 初始化 BM25 搜索
         self.bm25_search = BM25Search(self.redis_client, self.mysql_client)
+
+    def query(self, query):
+        
+        
+        answer, _ = self.bm25_search.search(query, threshold=0.85)
+        if answer:
+            # 记录 MySQL 答案
+            self.logger.info(f"MySQL 答案: {answer}")
+        else:
+            # 记录无答案
+            self.logger.info("SQL中未找到答案, 需要调用RAG系统")
+            # 设置默认答案
+            answer = "SQL未找到答案"
 
 
 def main():

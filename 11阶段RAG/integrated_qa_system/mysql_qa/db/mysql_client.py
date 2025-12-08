@@ -54,3 +54,14 @@ class MySQLClient:
                 return []
 
 # todo  没看
+
+    def close(self):
+            # 关闭数据库连接
+            try:
+                # 关闭连接
+                self.connection.close()
+                # 记录关闭成功
+                self.logger.info("MySQL 连接已关闭")
+            except pymysql.MySQLError as e:
+                # 记录关闭失败
+                self.logger.error(f"关闭连接失败: {e}")

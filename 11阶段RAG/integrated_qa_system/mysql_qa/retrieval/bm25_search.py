@@ -2,9 +2,9 @@
 # 导入 BM25 算法
 from rank_bm25 import BM25Okapi
 # 导入数值计算库
-# import numpy as np
+import numpy as np
 # # 导入文本预处理
-# from utils.preprocess import preprocess_text
+from utils.preprocess import preprocess_text
 # # 导入日志
 from base.logger import logger
 
