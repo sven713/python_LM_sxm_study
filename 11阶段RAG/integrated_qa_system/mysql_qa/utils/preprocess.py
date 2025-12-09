@@ -2,7 +2,7 @@
 # 导入分词库
 import jieba
 # 导入日志
-from base import logger
+from base.logger import logger
 
 def preprocess_text(text):
     # 预处理文本

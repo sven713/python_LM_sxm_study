@@ -174,3 +174,24 @@
 2025-12-08 13:59:26,371 - EduRAG - ERROR - Redis 查询失败: Error 61 connecting to localhost:6379. Connection refused.
 2025-12-08 13:59:26,371 - EduRAG - ERROR - 搜索失败: module 'base.logger' has no attribute 'info'
 2025-12-08 13:59:26,371 - EduRAG - INFO - SQL中未找到答案, 需要调用RAG系统
+2025-12-09 13:39:57,717 - EduRAG - INFO - MySQL 连接已关闭
+2025-12-09 13:40:01,855 - EduRAG - INFO - MySQL 连接成功
+2025-12-09 13:40:01,855 - EduRAG - INFO - Redis 连接成功
+2025-12-09 13:40:01,856 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-09 13:40:01,856 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-09 13:40:01,872 - EduRAG - ERROR - 查询失败: (1146, "Table 'subjects_kg.jpkb' doesn't exist")
+2025-12-09 13:40:01,872 - EduRAG - WARNING - 未加载到问题
+2025-12-09 13:40:14,681 - EduRAG - ERROR - Redis 查询失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-09 13:40:14,682 - EduRAG - ERROR - 搜索失败: module 'base.logger' has no attribute 'info'
+2025-12-09 13:40:14,682 - EduRAG - INFO - SQL中未找到答案, 需要调用RAG系统
+2025-12-09 13:42:46,570 - EduRAG - INFO - MySQL 连接已关闭
+2025-12-09 13:42:50,766 - EduRAG - INFO - MySQL 连接成功
+2025-12-09 13:42:50,767 - EduRAG - INFO - Redis 连接成功
+2025-12-09 13:42:50,767 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-09 13:42:50,768 - EduRAG - ERROR - Redis 获取失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-09 13:42:50,777 - EduRAG - ERROR - 查询失败: (1146, "Table 'subjects_kg.jpkb' doesn't exist")
+2025-12-09 13:42:50,777 - EduRAG - WARNING - 未加载到问题
+2025-12-09 13:43:00,033 - EduRAG - ERROR - Redis 查询失败: Error 61 connecting to localhost:6379. Connection refused.
+2025-12-09 13:43:00,035 - EduRAG - INFO - 开始预处理文本
+2025-12-09 13:43:00,329 - EduRAG - ERROR - 搜索失败: 'NoneType' object has no attribute 'get_scores'
+2025-12-09 13:43:00,329 - EduRAG - INFO - SQL中未找到答案, 需要调用RAG系统
