@@ -2715,3 +2715,54 @@ http://112.126.69.168:8080/reception/showReceptionView?id=9e409e005fab427b844ed6
 2025-12-14 13:41:17,899 - EduRAG - INFO - 存储数据到 Redis: answer:特殊符号切割
 2025-12-14 13:41:17,899 - EduRAG - INFO - 搜索成功，Softmax 相似度: 1.000
 2025-12-14 13:41:17,899 - EduRAG - INFO - MySQL 答案: 字符串切割特殊字符时，需要进行转义比如split("\#"),加上转义就可以了
+2025-12-14 13:44:15,344 - EduRAG - INFO - 退出 MySQL 系统
+2025-12-14 13:44:15,345 - EduRAG - INFO - MySQL 连接已关闭
+2025-12-14 13:44:19,815 - EduRAG - INFO - MySQL 连接成功
+2025-12-14 13:44:19,816 - EduRAG - INFO - Redis 连接成功
+2025-12-14 13:44:19,818 - EduRAG - INFO - BM25 模型初始化完成
+2025-12-14 13:44:34,182 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:44:34,511 - EduRAG - INFO - 存储数据到 Redis: answer:faild to load module canberra
+2025-12-14 13:44:34,511 - EduRAG - INFO - 搜索成功，Softmax 相似度: 1.000
+2025-12-14 13:44:34,511 - EduRAG - INFO - MySQL 答案: 用 sudo apt-get install libcanberra-gtk-module   命令安装  libcanberra-gtk-module  模块
+2025-12-14 13:44:43,541 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:44:43,545 - EduRAG - INFO - 存储数据到 Redis: answer:faild to load module can
+2025-12-14 13:44:43,545 - EduRAG - INFO - 搜索成功，Softmax 相似度: 1.000
+2025-12-14 13:44:43,546 - EduRAG - INFO - MySQL 答案: 用 sudo apt-get install libcanberra-gtk-module   命令安装  libcanberra-gtk-module  模块
+2025-12-14 13:44:52,156 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:44:52,159 - EduRAG - INFO - 存储数据到 Redis: answer:load module canberra-gtk
+2025-12-14 13:44:52,159 - EduRAG - INFO - 搜索成功，Softmax 相似度: 1.000
+2025-12-14 13:44:52,159 - EduRAG - INFO - MySQL 答案: 用 sudo apt-get install libcanberra-gtk-module   命令安装  libcanberra-gtk-module  模块
+2025-12-14 13:45:16,166 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:45:16,169 - EduRAG - INFO - 存储数据到 Redis: answer:faild to module c
+2025-12-14 13:45:16,170 - EduRAG - INFO - 搜索成功，Softmax 相似度: 1.000
+2025-12-14 13:45:16,170 - EduRAG - INFO - MySQL 答案: 用 sudo apt-get install libcanberra-gtk-module   命令安装  libcanberra-gtk-module  模块
+2025-12-14 13:45:41,501 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:45:41,503 - EduRAG - INFO - 未找到可靠答案，最高 Softmax 相似度: 0.270
+2025-12-14 13:45:41,503 - EduRAG - INFO - SQL中未找到答案, 需要调用RAG系统
+2025-12-14 13:45:49,770 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:45:49,773 - EduRAG - INFO - 存储数据到 Redis: answer:redis存储类型
+2025-12-14 13:45:49,773 - EduRAG - INFO - 搜索成功，Softmax 相似度: 0.997
+2025-12-14 13:45:49,773 - EduRAG - INFO - MySQL 答案: 这个主要是和C语言里面的某些字符串处理函数比较，得到的概念，redis里面的字符串处理函数并不像C语言那样,使用'\0'作为判定一个字符串的结尾，而是使用了独立的 len，这样可以保证即使存储的数据中有'\0'这样的字符,它也是可以支持读取的
+2025-12-14 13:45:57,296 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:45:57,297 - EduRAG - INFO - 未找到可靠答案，最高 Softmax 相似度: 0.154
+2025-12-14 13:45:57,297 - EduRAG - INFO - SQL中未找到答案, 需要调用RAG系统
+2025-12-14 13:46:03,617 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:46:03,618 - EduRAG - INFO - 未找到可靠答案，最高 Softmax 相似度: 0.693
+2025-12-14 13:46:03,618 - EduRAG - INFO - SQL中未找到答案, 需要调用RAG系统
+2025-12-14 13:46:30,892 - EduRAG - INFO - 从 Redis 获取答案: redis存储类型
+2025-12-14 13:46:30,892 - EduRAG - INFO - MySQL 答案: "这个主要是和C语言里面的某些字符串处理函数比较，得到的概念，redis里面的字符串处理函数并不像C语言那样,使用'\\0'作为判定一个字符串的结尾，而是使用了独立的 len，这样可以保证即使存储的数据中有'\\0'这样的字符,它也是可以支持读取的"
+2025-12-14 13:47:28,310 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:47:28,314 - EduRAG - INFO - 存储数据到 Redis: answer:redis存储类型
+2025-12-14 13:47:28,314 - EduRAG - INFO - 搜索成功，Softmax 相似度: 0.997
+2025-12-14 13:47:28,315 - EduRAG - INFO - MySQL 答案: 这个主要是和C语言里面的某些字符串处理函数比较，得到的概念，redis里面的字符串处理函数并不像C语言那样,使用'\0'作为判定一个字符串的结尾，而是使用了独立的 len，这样可以保证即使存储的数据中有'\0'这样的字符,它也是可以支持读取的
+2025-12-14 13:50:58,891 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:50:58,899 - EduRAG - INFO - 存储数据到 Redis: answer:特殊符号的切割
+2025-12-14 13:50:58,900 - EduRAG - INFO - 搜索成功，Softmax 相似度: 1.000
+2025-12-14 13:50:58,900 - EduRAG - INFO - MySQL 答案: 字符串切割特殊字符时，需要进行转义比如split("\#"),加上转义就可以了
+2025-12-14 13:51:16,277 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:51:16,280 - EduRAG - INFO - 存储数据到 Redis: answer:特殊符号的切割
+2025-12-14 13:51:16,280 - EduRAG - INFO - 搜索成功，Softmax 相似度: 1.000
+2025-12-14 13:51:16,280 - EduRAG - INFO - MySQL 答案: 字符串切割特殊字符时，需要进行转义比如split("\#"),加上转义就可以了
+2025-12-14 13:52:28,101 - EduRAG - INFO - 开始预处理文本
+2025-12-14 13:52:28,105 - EduRAG - INFO - 未找到可靠答案，最高 Softmax 相似度: 0.086
+2025-12-14 13:52:28,106 - EduRAG - INFO - SQL中未找到答案, 需要调用RAG系统
