@@ -27,6 +27,13 @@ class MySQLQASystem:
             # 设置默认答案
             answer = "SQL未找到答案"
 
+        # 计算处理时间
+        # processing_time = time.time() - start_time
+        # # 记录处理时间
+        # self.logger.info(f"查询处理耗时 {processing_time:.2f}秒")
+        # 返回答案
+        return answer
+
 
 def main():
     mysql_system = MySQLQASystem()

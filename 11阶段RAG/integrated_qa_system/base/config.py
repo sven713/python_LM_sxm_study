@@ -30,7 +30,7 @@ class Config:
         # Redis 端口
         self.REDIS_PORT = self.config.getint('redis', 'port', fallback=6379)  
         # Redis 密码
-        self.REDIS_PASSWORD = self.config.get('redis', 'password', fallback='1234') 
+        self.REDIS_PASSWORD = self.config.get('redis', 'password', fallback=None) 
         # Redis 数据库编号
         self.REDIS_DB = self.config.getint('redis', 'db', fallback=0)  
         # 日志文件路径

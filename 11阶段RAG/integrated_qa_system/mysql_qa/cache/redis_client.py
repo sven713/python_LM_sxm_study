@@ -30,7 +30,7 @@ class RedisClient:
 
     def set_data(self, key, value):
         try:
-            self.client.set(key, json.dumps(value))
+            self.client.set(key, json.dumps(value, ensure_ascii=False))
             self.logger.info(f"存储数据到 Redis: {key}")
         except redis.RedisError as e:
             self.logger.error(f"Redis 存储失败: {e}")
