@@ -7,7 +7,7 @@ from typing import Iterator
 from edu_ocr import get_ocr
 from langchain_core.documents import Document
 from langchain_core.document_loaders import BaseLoader
-from langchain.text_splitter import CharacterTextSplitter
+from langchain_text_splitters import CharacterTextSplitter
 # PDF OCR 控制：只对宽高超过页面一定比例（图片宽/页面宽，图片高/页面高）的图片进行 OCR。
 # 这样可以避免 PDF 中一些小图片的干扰，提高非扫描版 PDF 处理速度
 PDF_OCR_THRESHOLD = (0.6, 0.6)
@@ -49,7 +49,7 @@ class OCRPDFLoader(BaseLoader):
             b_unit.set_description("OCRPDFLoader context page index: {}".format(i))
             b_unit.refresh()
             # 提取文本：默认使用 "text" 模式提取文本。
-            text = page.get_text("")
+            text = page.get_text("text")
             resp += text + "\n"
             # print(f'resp-->{resp}')
             # 获取图片：获得所有显示的图像的元信息列表。
@@ -112,7 +112,7 @@ class OCRPDFLoader(BaseLoader):
         return rotated_img
 
 if __name__ == '__main__':
-    pdf_loader = OCRPDFLoader(file_path="/Users/ligang/Desktop/EduRAG课堂资料/codes/integrated_qa_system/rag_qa/samples/ocr_03.pdf")
+    pdf_loader = OCRPDFLoader(file_path="/Users/songximing/Documents/GitHub/python_LM_sxm_study/11阶段RAG/integrated_qa_system/rag_qa/samples/ocr_03.pdf")
     doc = pdf_loader.load()
 
     print(type(doc))
