@@ -1,8 +1,94 @@
+
 import os
 from langchain_community.document_loaders import TextLoader
 from langchain_community.document_loaders.markdown import UnstructuredMarkdownLoader
-from langchain.text_splitter import MarkdownTextSplitter
+from langchain_text_splitters import MarkdownTextSplitter
 from datetime import datetime
-from edu_text_spliter import AliTextSplitter, ChineseRecursiveTextSplitter
+# from edu_text_spliter import AliTextSplitter, ChineseRecursiveTextSplitter
+import sys
+# 获取当前文件所在目录的绝对路径
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# print(f'current_dir--》{current_dir}')
+# 获取core文件所在的目录的绝对路径
+rag_qa_path = os.path.dirname(current_dir)
+# print(f'rag_qa_path--》{rag_qa_path}')
+sys.path.insert(0, rag_qa_path)
+# 获取根目录文件所在的绝对位置
+project_root = os.path.dirname(rag_qa_path)
+sys.path.insert(0, project_root)
 from edu_document_loaders import OCRPDFLoader, OCRDOCLoader, OCRPPTLoader, OCRIMGLoader
-from base import logger, Config
+from base.logger import logger#, Config
+
+
+document_loaders = {
+    # 文本文件使用 TextLoader
+    ".txt": TextLoader,
+    # PDF 文件使用 OCRPDFLoader
+    ".pdf": OCRPDFLoader,
+    # Word 文件使用 OCRDOCLoader
+    ".docx": OCRDOCLoader,
+    # PPT 文件使用 OCRPPTLoader
+    ".ppt": OCRPPTLoader,
+    # PPTX 文件使用 OCRPPTLoader
+    ".pptx": OCRPPTLoader,
+    # JPG 文件使用 OCRIMGLoader
+    ".jpg": OCRIMGLoader,
+    # PNG 文件使用 OCRIMGLoader
+    ".png": OCRIMGLoader,
+    # Markdown 文件使用 UnstructuredMarkdownLoader
+    ".md": UnstructuredMarkdownLoader
+}
+
+#sxm 的代码
+
+# 定义函数，从指定文件夹加载多种类型文件并添加元数据 ?? 元数据?
+def load_documents_from_directory(directory_path):
+
+  documents = []
+
+
+  supported_extensions = document_loaders.keys()
+  # 遍历指定目录及其子目录
+  for root, _, files in os.walk(directory_path):
+      # 遍历当前目录下的所有文件
+      for file in files:
+          # 构造文件的完整路径
+          file_path = os.path.join(root, file)
+          # 获取文件扩展名并转换为小写
+          file_extension = os.path.splitext(file_path)[1].lower()
+          # 检查文件类型是否在支持的扩展名列表中
+          if file_extension in supported_extensions:
+              # 使用 try-except 捕获加载过程中的异常
+              try:
+                  # 根据文件扩展名获取对应的加载器类
+                  loader_class = document_loaders[file_extension]
+                  # 实例化加载器对象，传入文件路径
+                  if file_extension == ".txt":
+                      loader = loader_class(file_path, encoding="utf-8")
+                  else:
+                      loader = loader_class(file_path)
+                  # 调用加载器加载文档内容，返回文档列表
+                  loaded_docs = loader.load()
+                  
+                  print('res----',loaded_docs)
+                  # 记录成功加载文件的日志
+                  logger.info(f"成功加载文件: {file_path}")
+              # 捕获加载过程中可能出现的异常
+              except Exception as e:
+                  # 记录加载失败的日志，包含错误信息
+                  logger.error(f"加载文件 {file_path} 失败: {str(e)}")
+          # 如果文件类型不在支持列表中
+          else:
+              # 记录警告日志，提示不支持的文件类型
+              logger.warning(f"不支持的文件类型: {file_path}")
+  # 返回加载的所有文档列表
+  return documents
+
+
+
+
+
+if __name__ == '__main__':
+    directory_path = '/Users/songximing/Documents/GitHub/python_LM_sxm_study/11阶段RAG/integrated_qa_system/rag_qa/data/ai_data'
+    documents = load_documents_from_directory(directory_path)
+    print(documents)
