@@ -17,7 +17,10 @@ sys.path.insert(0, rag_qa_path)
 project_root = os.path.dirname(rag_qa_path)
 sys.path.insert(0, project_root)
 from edu_document_loaders import OCRPDFLoader, OCRDOCLoader, OCRPPTLoader, OCRIMGLoader
-from base.logger import logger#, Config
+from base.logger import logger
+from base.config import Config
+
+conf = Config()
 
 
 document_loaders = {
@@ -48,6 +51,8 @@ def load_documents_from_directory(directory_path):
 
 
   supported_extensions = document_loaders.keys()
+  source = os.path.basename(directory_path).replace("_data", "")
+
   # 遍历指定目录及其子目录
   for root, _, files in os.walk(directory_path):
       # 遍历当前目录下的所有文件
@@ -69,8 +74,18 @@ def load_documents_from_directory(directory_path):
                       loader = loader_class(file_path)
                   # 调用加载器加载文档内容，返回文档列表
                   loaded_docs = loader.load()
+
+                  for doc in loaded_docs:
+                    # 为文档添加学科类别元数据
+                    doc.metadata["source"] = source
+                    # 为文档添加文件路径元数据
+                    doc.metadata["file_path"] = file_path
+                    # 为文档添加当前时间戳元数据
+                    doc.metadata["timestamp"] = datetime.now().isoformat()
+                    # print(f'loaded_docs111--》{loaded_docs}')
+                    documents.extend(loaded_docs)
                   
-                  print('res----',loaded_docs)
+                #   print('res----',loaded_docs)
                   # 记录成功加载文件的日志
                   logger.info(f"成功加载文件: {file_path}")
               # 捕获加载过程中可能出现的异常
@@ -87,8 +102,26 @@ def load_documents_from_directory(directory_path):
 
 
 
+# 定义函数，处理文档并进行分层切分，返回子块结果
+def process_documents(directory_path, parent_chunk_size=conf.PARENT_CHUNK_SIZE,
+                     child_chunk_size=conf.CHILD_CHUNK_SIZE,
+                     chunk_overlap=conf.CHUNK_OVERLAP):
+    # 从指定目录加载所有文档
+    documents = load_documents_from_directory(directory_path)
+    # 记录加载的文档总数日志
+    logger.info(f"加载的文档数量: {len(documents)}")
+
 
 if __name__ == '__main__':
-    directory_path = '/Users/songximing/Documents/GitHub/python_LM_sxm_study/11阶段RAG/integrated_qa_system/rag_qa/data/ai_data'
-    documents = load_documents_from_directory(directory_path)
-    print(documents)
+    # directory_path = '/Users/songximing/Documents/GitHub/python_LM_sxm_study/11阶段RAG/integrated_qa_system/rag_qa/data/ai_data'
+    # documents = load_documents_from_directory(directory_path)
+    # print(documents)
+
+
+    chunks = process_documents(
+        '/Users/songximing/Desktop/大模型/11阶段/day04资料代码/02-代码/integrated_qa_system/rag_qa/data/ai_data',
+        conf.PARENT_CHUNK_SIZE,
+        conf.CHILD_CHUNK_SIZE,
+        conf.CHUNK_OVERLAP,
+    )
+    print('??',chunks)

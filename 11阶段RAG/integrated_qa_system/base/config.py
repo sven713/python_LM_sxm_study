@@ -36,6 +36,16 @@ class Config:
         # 日志文件路径
         self.LOG_FILE = self.config.get('logger', 'log_file', fallback='logs/app.log')  
 
+
+
+        # 检索参数
+        # 父块大小
+        self.PARENT_CHUNK_SIZE = self.config.getint('retrieval', 'parent_chunk_size', fallback=1200)
+        # 子块大小
+        self.CHILD_CHUNK_SIZE = self.config.getint('retrieval', 'child_chunk_size', fallback=300)
+        # 块重叠大小
+        self.CHUNK_OVERLAP = self.config.getint('retrieval', 'chunk_overlap', fallback=50)
+
 if __name__ == '__main__':
     conf = Config()
     print(conf.CHILD_CHUNK_SIZE)
