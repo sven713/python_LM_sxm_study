@@ -1,11 +1,10 @@
 
 import os
+import sys
 from langchain_community.document_loaders import TextLoader
 from langchain_community.document_loaders.markdown import UnstructuredMarkdownLoader
 from langchain_text_splitters import MarkdownTextSplitter
 from datetime import datetime
-# from edu_text_spliter import AliTextSplitter, ChineseRecursiveTextSplitter
-import sys
 # 获取当前文件所在目录的绝对路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
 # print(f'current_dir--》{current_dir}')
@@ -16,6 +15,7 @@ sys.path.insert(0, rag_qa_path)
 # 获取根目录文件所在的绝对位置
 project_root = os.path.dirname(rag_qa_path)
 sys.path.insert(0, project_root)
+from edu_text_spliter import AliTextSplitter, ChineseRecursiveTextSplitter
 from edu_document_loaders import OCRPDFLoader, OCRDOCLoader, OCRPPTLoader, OCRIMGLoader
 from base.logger import logger
 from base.config import Config
@@ -110,6 +110,16 @@ def process_documents(directory_path, parent_chunk_size=conf.PARENT_CHUNK_SIZE,
     documents = load_documents_from_directory(directory_path)
     # 记录加载的文档总数日志
     logger.info(f"加载的文档数量: {len(documents)}")
+
+    # 初始化父块和子块分词器（通用）
+    parent_splitter = ChineseRecursiveTextSplitter(chunk_size=parent_chunk_size, chunk_overlap=chunk_overlap)
+    child_splitter = ChineseRecursiveTextSplitter(chunk_size=child_chunk_size, chunk_overlap=chunk_overlap)
+    # 初始化 Markdown 专用分词器
+    markdown_parent_splitter = MarkdownTextSplitter(chunk_size=parent_chunk_size, chunk_overlap=chunk_overlap)
+    markdown_child_splitter = MarkdownTextSplitter(chunk_size=child_chunk_size, chunk_overlap=chunk_overlap)
+
+    # 初始化空列表，用于存储所有子块
+    child_chunks = []
 
 
 if __name__ == '__main__':
