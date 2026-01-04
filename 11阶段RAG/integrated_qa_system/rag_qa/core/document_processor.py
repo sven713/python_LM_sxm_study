@@ -121,6 +121,20 @@ def process_documents(directory_path, parent_chunk_size=conf.PARENT_CHUNK_SIZE,
     # 初始化空列表，用于存储所有子块
     child_chunks = []
 
+    # 遍历每个原始文档，带上索引 i
+    for i, doc in enumerate(documents):
+        # print(doc)
+        # 获取文件扩展名
+        file_extension = os.path.splitext(doc.metadata.get("file_path", ""))[1].lower()
+
+        # 选择切分器
+        is_markdown = (file_extension == ".md")
+        parent_splitter_to_use = markdown_parent_splitter if is_markdown else parent_splitter
+        # print(f'parent_splitter_to_use-->{parent_splitter_to_use}')
+        child_splitter_to_use = markdown_child_splitter if is_markdown else child_splitter
+        logger.info(f"处理文档: {doc.metadata['file_path']}, 使用切分器: {'Markdown' if is_markdown else 'ChineseRecursive'}")
+        break
+
 
 if __name__ == '__main__':
     # directory_path = '/Users/songximing/Documents/GitHub/python_LM_sxm_study/11阶段RAG/integrated_qa_system/rag_qa/data/ai_data'
@@ -128,7 +142,7 @@ if __name__ == '__main__':
     # print(documents)
 
 
-    chunks = process_documents(
+    chunks =  process_documents(
         '/Users/songximing/Desktop/大模型/11阶段/day04资料代码/02-代码/integrated_qa_system/rag_qa/data/ai_data',
         conf.PARENT_CHUNK_SIZE,
         conf.CHILD_CHUNK_SIZE,
