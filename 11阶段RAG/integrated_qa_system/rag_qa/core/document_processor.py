@@ -133,8 +133,40 @@ def process_documents(directory_path, parent_chunk_size=conf.PARENT_CHUNK_SIZE,
         # print(f'parent_splitter_to_use-->{parent_splitter_to_use}')
         child_splitter_to_use = markdown_child_splitter if is_markdown else child_splitter
         logger.info(f"处理文档: {doc.metadata['file_path']}, 使用切分器: {'Markdown' if is_markdown else 'ChineseRecursive'}")
-        break
 
+
+         # 使用父块分词器将文档切分为父块
+        parent_docs = parent_splitter_to_use.split_documents([doc])
+        # 遍历每个父块，带上索引 j
+        for j, parent_doc in enumerate(parent_docs):
+
+            # 为父块生成唯一 ID，格式为 "doc_i_parent_j"
+            parent_id = f"doc_{i}_parent_{j}"
+            # 将父块 ID 添加到元数据
+            parent_doc.metadata["parent_id"] = parent_id
+            # 将父块内容存储到元数据
+            parent_doc.metadata["parent_content"] = parent_doc.page_content
+
+            # 使用子块分词器将父块切分为子块
+            sub_chunks = child_splitter_to_use.split_documents([parent_doc])
+            # 遍历每个子块，带上索引 k
+            for k, sub_chunk in enumerate(sub_chunks):
+                # 为子块添加父块 ID 到元数据
+                sub_chunk.metadata["parent_id"] = parent_id
+                # 为子块添加父块内容到元数据
+                sub_chunk.metadata["parent_content"] = parent_doc.page_content
+                # 为子块生成唯一 ID，格式为 "parent_id_child_k"
+                sub_chunk.metadata["id"] = f"{parent_id}_child_{k}"
+                # 将子块添加到子块列表中
+                child_chunks.append(sub_chunk)
+
+        # break
+
+
+    # 记录子块总数日志
+    logger.info(f"子块数量: {len(child_chunks)}")
+    # 返回所有子块列表
+    return child_chunks
 
 if __name__ == '__main__':
     # directory_path = '/Users/songximing/Documents/GitHub/python_LM_sxm_study/11阶段RAG/integrated_qa_system/rag_qa/data/ai_data'
@@ -148,4 +180,4 @@ if __name__ == '__main__':
         conf.CHILD_CHUNK_SIZE,
         conf.CHUNK_OVERLAP,
     )
-    print('??',chunks)
+    print('??',chunks[1])
